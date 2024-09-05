@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 /src/utils/firebase.js
-/src/utils/constants
+/src/utils/constants.js
 
 
 # testing
