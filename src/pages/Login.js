@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import Header from "./Header";
+
 import { checkValidData } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
@@ -7,16 +7,14 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addUser } from "../redux/slices/userSlice";
+import Header from "../component/Header";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user)
   const [isSignin, setIsSignin] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
-  const navigate = useNavigate();
 
   const name = useRef(null); // you get the name in side the " name.current.value " because of useRef return an object you can find inside this.
   const email = useRef(null); // you get the name in side the " email.current.value " because of useRef return an object you can find inside this.
@@ -63,14 +61,12 @@ const Login = () => {
               // An error occurred
               // ...
             });
-          navigate("/browse");
-          console.log(user);
+
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode + "-" + errorMessage);
           // ..
         });
     } else {
@@ -83,14 +79,12 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          navigate("/browse");
-          console.log("User Successfully Sign in" + user);
+
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode + "-" + errorMessage);
         });
     }
   };
