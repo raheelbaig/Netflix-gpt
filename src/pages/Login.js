@@ -10,6 +10,7 @@ import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/slices/userSlice";
 import Header from "../component/Header";
+import { BG_URL } from "../utils/constants";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -95,7 +96,7 @@ const Login = () => {
       <div className="absolute ">
         <img
           className="w-screen h-screen"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/36a4db5b-dec2-458a-a1c0-662fa60e7473/f69907c1-91ed-48b1-ad82-f02be95c906b/PK-en-20240820-TRIFECTA-perspective_WEB_989d253a-926b-41b7-963c-5aedb99875dd_medium.jpg"
+          src={BG_URL}
           alt="background-image"
         />
       </div>
